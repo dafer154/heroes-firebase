@@ -14,10 +14,12 @@
 
 <div class="row animated fadeIn fast">
   <div class="col-md-12">
-    <form (ngsubmit)="guardar()" #forma="ngForm">
+    <form (ngSubmit)="guardar()" #forma="ngForm">
       <div class="form-group">
         <label>Nombre</label>
-        <input type="text" name=""
+        <input  [(ngModel)]="heroe.nombre"
+                name="nombre"
+                type="text"
                 class="form-control"
                 placeholder="Nombre del heroe"
                 required>
@@ -25,7 +27,9 @@
 
       <div class="form-group">
         <label>Casa</label>
-        <select class="form-control" name="">
+        <select [(ngModel)]="heroe.casa"
+            name="casa"
+            class="form-control" >
           <option value="Marvel">Marvel</option>
           <option value="DC">DC</option>
         </select>
@@ -33,18 +37,18 @@
 
       <div class="form-group">
         <label>Bio</label>
-        <textarea
-                type="text" name=""
-                class="form-control"
-                required>
+        <textarea [(ngModel)]="heroe.bio"
+                name="bio"
+                type="text"
+                class="form-control">
         </textarea>
       </div>
 
       <div class="form-group">
-          <button [routerLink]="['/heroe','nuevo']"
+          <button [disabled]="!forma.valid"
           class="btn btn-outline-primary" type="submit" name="button">Guardar</button>
       </div>
-
+      {{forma.valid}}
     </form>
   </div>
 </div>
